@@ -18,12 +18,25 @@ public class TestAListNode {
 
     ListNode listNode;
 
+    ListNode listNode1;
+
+
     @Before
     public void creat_list_node() {
         listNode = new ListNode(2);
         ListNode listNode2 = new ListNode(3);
         ListNode listNode3 = new ListNode(4);
         listNode.next = listNode2;
+        listNode2.next = listNode3;
+        listNode3.next = null;
+    }
+
+    @Before
+    public void creat_list_node_1() {
+        listNode1 = new ListNode(2);
+        ListNode listNode2 = new ListNode(3);
+        ListNode listNode3 = new ListNode(4);
+        listNode1.next = listNode2;
         listNode2.next = listNode3;
         listNode3.next = null;
     }
@@ -65,6 +78,15 @@ public class TestAListNode {
     @Test
     public void test_num_create_list_node() {
         int num = 432;
+        ListNode ln = listNode,ln1 = listNode1;
+        while (ln != null || ln1 != null ){
+
+        }
+
+
+
+
+
         ListNode listNode = null;
         while (num / 10 != 0) {
             listNode = new ListNode(num % 10);
