@@ -18,7 +18,7 @@ public class SolutionTest {
      */
     @Test
     public void test_string_min_length() {
-        String str = "abcabcbb";
+        String str = "cx";
         int length = str.length();
         List<String> list = new ArrayList<>();
         for (int i = 0; i < length; i++) {
@@ -27,6 +27,7 @@ public class SolutionTest {
         System.out.println(Arrays.toString(list.toArray()));
         List<String> stringSet = new ArrayList<>();
         Map<String, Integer> map = new HashMap<>();
+        List<Integer> stringArrayList = new ArrayList<>();
         a:
         for (int j = 0; j < list.size(); j++) {
             b:
@@ -36,6 +37,7 @@ public class SolutionTest {
                     String toString = stringSet.toString();
                     int size = stringSet.size();
                     map.put(toString, size);
+                    stringArrayList.add(size);
                     stringSet.clear();
                     continue b;
                 } else {
@@ -45,23 +47,54 @@ public class SolutionTest {
             stringSet.clear();
         }
 
-
+        Integer max = Collections.max(stringArrayList);
+        System.out.println(max);
         System.out.println(map.toString());
+
+
+
+
     }
 
-    @Test
-    public void test_for_continue() {
-//a在此处运行结果为：i:0 i:0 i:0
-        for (int j = 0; j < 3; j++) {
-            a:
-//a在此处，结果与无a标记一样
-            for (int i = 0; i < 3; i++) {
-                if (i == 1) {
-                    continue a;
-                }
-
-                System.out.print("i:" + i);
-            }
+    public int test_for_continue(String s) {
+        if (("").equals(s)) {
+            return 0;
         }
+        if ((" ").equals(s)) {
+            return 1;
+        }
+        if (s.trim().length()==1){
+            return 1;
+        }
+        int length = s.length();
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            list.add(s.substring(i, i + 1));
+        }
+        System.out.println(Arrays.toString(list.toArray()));
+        List<String> stringSet = new ArrayList<>();
+        List<Integer> stringArrayList = new ArrayList<>();
+        a:
+        for (int j = 0; j < list.size(); j++) {
+            b:
+            for (int i = j; i < list.size(); i++) {
+                String s1 = list.get(i);
+                if (stringSet.contains(s1)) {
+                    int size = stringSet.size();
+                    stringArrayList.add(size);
+                    stringSet.clear();
+                    continue b;
+                } else {
+                    stringSet.add(s1);
+                }
+            }
+            stringSet.clear();
+        }
+        if (stringArrayList.size()==0){
+            return 1;
+        }
+        Integer max = Collections.max(stringArrayList);
+        System.out.println(max);
+        return max;
     }
 }
