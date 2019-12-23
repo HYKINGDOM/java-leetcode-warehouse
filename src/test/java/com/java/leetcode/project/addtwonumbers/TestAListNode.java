@@ -75,6 +75,9 @@ public class TestAListNode {
         Assert.assertEquals(432, sum);
     }
 
+    /**
+     *
+     */
     @Test
     public void test_num_create_list_node() {
         int num = 432;
