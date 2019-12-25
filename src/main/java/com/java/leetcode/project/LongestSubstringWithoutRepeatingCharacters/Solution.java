@@ -9,6 +9,10 @@ import java.util.List;
  * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
  * 连接 https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
  *
+ * 执行结果：通过 显示详情
+ * 执行用时 : 527 ms , 在所有 java 提交中击败了 5.01%的用户
+ * 内存消耗 : 40.7 MB, 在所有 java 提交中击败了 71.29%的用户
+ *
  * @author Administrator
  */
 public class Solution {
