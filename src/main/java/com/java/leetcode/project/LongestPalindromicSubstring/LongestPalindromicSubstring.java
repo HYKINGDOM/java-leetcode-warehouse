@@ -15,16 +15,25 @@ public class LongestPalindromicSubstring {
         a:
         for (int i = 0; i < length; i++) {
             String strListFirst = s.substring(i, i + 1);
-            for (int j = 1; j < length; j++) {
+            int num = 0;
+            for (int j = i + 1; j < length; j++) {
                 String strListTwo = s.substring(j, j + 1);
-                if (strListFirst.equals(strListTwo) && i < j + 1) {
+                if (strListFirst.equals(strListTwo)) {
                     String substring = s.substring(i, j + 1);
                     if (isLongestPalindromicSubstring(substring)) {
                         if (longStr.length() < substring.length()) {
                             longStr = substring;
                         }
+                    } else {
+                        num = num + 1;
+                        if (num % 2 == 0){
+                            continue a;
+                        }
                     }
                 }
+            }
+            if (longStr.length() == length) {
+                break;
             }
         }
         if ("".equals(longStr)) {
@@ -47,18 +56,9 @@ public class LongestPalindromicSubstring {
             return false;
         }
         int length = lengthStr / 2;
-        boolean isFlag = true;
-        if (lengthStr % 2 == 1) {
-            isFlag = false;
-        }
-        for (int i = 1; i <= length; i++) {
-            String substringFirst = substring.substring(length - i, length - i + 1);
-            String substringTwo;
-            if (isFlag) {
-                substringTwo = substring.substring(length + i - 1, length + i);
-            } else {
-                substringTwo = substring.substring(length + i, length + i + 1);
-            }
+        for (int i = 0; i <= length; i++) {
+            String substringFirst = substring.substring(i, i + 1);
+            String substringTwo = substring.substring(lengthStr - i - 1, lengthStr - i);
             if (!substringFirst.equals(substringTwo)) {
                 return false;
             }
