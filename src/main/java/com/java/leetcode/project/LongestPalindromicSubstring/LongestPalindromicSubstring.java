@@ -15,7 +15,6 @@ public class LongestPalindromicSubstring {
         a:
         for (int i = 0; i < length; i++) {
             String strListFirst = s.substring(i, i + 1);
-            int num = 0;
             for (int j = i + 1; j < length; j++) {
                 String strListTwo = s.substring(j, j + 1);
                 if (strListFirst.equals(strListTwo)) {
@@ -23,11 +22,6 @@ public class LongestPalindromicSubstring {
                     if (isLongestPalindromicSubstring(substring)) {
                         if (longStr.length() < substring.length()) {
                             longStr = substring;
-                        }
-                    } else {
-                        num = num + 1;
-                        if (num % 2 == 0){
-                            continue a;
                         }
                     }
                 }
